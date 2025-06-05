@@ -18,8 +18,7 @@ export {
   AgentType, 
   AgentStatus, 
   PaymentStatus, 
-  UserRole,
-  LogLevel as UtilLogLevel
+  UserRole
 } from './types';
 
 // Re-export commonly used types for convenience

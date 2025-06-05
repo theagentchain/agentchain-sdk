@@ -1,7 +1,7 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  roots: ['<rootDir>/src', '<rootDir>/tests'],
+  roots: ['<rootDir>/src'],
   testMatch: [
     '**/__tests__/**/*.+(ts|tsx|js)',
     '**/*.(test|spec).+(ts|tsx|js)'
@@ -20,9 +20,6 @@ module.exports = {
     'lcov',
     'html'
   ],
-  setupFilesAfterEnv: ['<rootDir>/tests/setup.ts'],
-  moduleNameMapping: {
-    '^@/(.*)$': '<rootDir>/src/$1'
-  },
-  testTimeout: 30000
+  testTimeout: 30000,
+  modulePathIgnorePatterns: ['<rootDir>/dist/']
 }; 

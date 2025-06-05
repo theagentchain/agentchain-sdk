@@ -9,6 +9,7 @@ import {
 import { WalletService } from './WalletService';
 import { logger } from '../utils/logger';
 import { cache } from '../utils/cache';
+import { PublicKey } from '@solana/web3.js';
 
 export interface PaymentProcessorConfig {
   walletService: WalletService;
@@ -317,9 +318,7 @@ export class PaymentProcessor {
    */
   private async processSOLPayment(paymentRequest: PaymentRequest): Promise<string> {
     try {
-      const recipientPublicKey = WalletService.publicKeyFromString(
-        paymentRequest.recipient
-      );
+      const recipientPublicKey = new PublicKey(paymentRequest.recipient);
 
       const result = await this.walletService.sendSOL(
         recipientPublicKey,
@@ -372,7 +371,7 @@ export class PaymentProcessor {
 
     // Validate recipient address format
     try {
-      this.walletService.constructor.publicKeyFromString(paymentRequest.recipient);
+      new PublicKey(paymentRequest.recipient);
     } catch (error) {
       throw new PaymentError('Invalid recipient address format');
     }

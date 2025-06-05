@@ -5,7 +5,9 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc",
@@ -15,7 +17,9 @@
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "docs": "typedoc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build && npm test",
+    "postversion": "git push && git push --tags",
+    "clean": "rm -rf dist"
   },
   "keywords": [
     "agentchain",
@@ -27,7 +31,9 @@
     "defi",
     "web3",
     "pumpfun",
-    "tokens"
+    "tokens",
+    "typescript",
+    "sdk"
   ],
   "author": "AgentChain Team",
   "license": "MIT",
@@ -65,10 +71,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/agentchain/agent-chain-sdk.git"
+    "url": "git+https://github.com/agentchain/agent-chain-sdk.git"
   },
   "bugs": {
     "url": "https://github.com/agentchain/agent-chain-sdk/issues"
   },
   "homepage": "https://github.com/agentchain/agent-chain-sdk#readme"
-} 
+}
